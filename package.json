@@ -1,0 +1,19 @@
+{
+    "name": "my-koa-middleware",
+    "version": "0.0.3",
+    "private": true,
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "underscore": "*",
+        "koa": "*",
+        "koa-sess": "*",
+        "koa-common": "*",
+        "koa-route": "*",
+        "koa-stylus": "*",
+        "koa-render": "*",
+        "co-views": "*",
+        "jade": "*"
+    }
+}

@@ -17,4 +17,3 @@ if [ $? -ne 0 ]; then
 fi
     
 alias node='node -harmony'
-
