@@ -5,35 +5,32 @@
  */
 
 var koa = require('koa');
-//routes, statjic-file, and views
-var route = require('koa-route');
-var static = require('koa-static');
+var router = require('koa-router');
 var views = require('koa-render');
-//common middleware
+var bodyParser = require('./lib/koa-bodyParser');
 var common = require('koa-common');
-
 var app = koa();
 
 //middleware setting
-app.use(views(__dirname + '/views', {
-    //html : 'underscore',
-    jade : 'jade'
-}));
-app.use(static(__dirname + '/public'));
+app.use(common.logger());
+app.use(common.favicon());
+app.use(common.etag());
+app.use(common.static(__dirname + '/public'));
+app.use(views(__dirname + '/views', 'jade'));
+app.use(bodyParser());
+app.use(router(app));
 
-//routing
-/*
-app.use(route.get('/views', function *(next) {
+// routing Restfull
+app.get('/views', function *(next) {
+    console.log(this.query);
     this.body = yield this.render('index', {message : 'Koa'});
-}));
-*/
-app.use(route.get('/views', function *(next) {
-    this.body = yield this.render('index', {message : 'Koa'});
-}));
+    yield next;
+});
 
-app.use(route.get('/hello', function *(next) {
-    this.body = 'Hello!!';
-}));
-
+app.post('/views', function *(next) {
+    console.log(this.body);
+    this.redirect('/views');
+    yield next;
+});
 
 app.listen(3000);

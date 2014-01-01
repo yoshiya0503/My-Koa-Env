@@ -9,10 +9,14 @@
         "underscore": "*",
         "koa": "*",
         "koa-sess": "*",
-        "koa-common": "*",
+        "koa-common": "git://github.com/koajs/common.git",
         "koa-route": "*",
+        "koa-router": "*",
         "koa-stylus": "*",
         "koa-render": "*",
+        "koa-error": "*",
+        "koa-qs": "*",
+        "co-body": "*",
         "co-views": "*",
         "jade": "*"
     }
