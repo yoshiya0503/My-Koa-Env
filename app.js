@@ -5,11 +5,13 @@
  */
 
 var koa = require('koa');
+var app = koa();
 var router = require('koa-router');
 var views = require('koa-render');
 var bodyParser = require('./lib/koa-bodyParser');
 var common = require('koa-common');
-var app = koa();
+var server = require('http').Server(app.callback());
+var io = require('socket.io').listen(server);
 
 //middleware setting
 app.use(common.logger());
@@ -31,6 +33,10 @@ app.post('/views', function *(next) {
     console.log(this.body);
     this.redirect('/views');
     yield next;
+});
+
+io.on('connection', function() {
+    console.log('!!!');
 });
 
 app.listen(3000);
