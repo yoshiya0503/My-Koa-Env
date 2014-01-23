@@ -6,7 +6,7 @@ if [ $? -ne 0 ]; then
     echo 'prease install node version 0.11.9'
     echo 'install node-v0.11.9 by nvm? (y/n)'
     read ask
-    case $ack in
+    case $ask in
         y) nvm install $_NODE_VERSION
             nvm use $_NODE_VERSION;;
         n) echo 'skip install ...'
