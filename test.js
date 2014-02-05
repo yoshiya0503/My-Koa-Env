@@ -1,13 +1,13 @@
 var koa = require('koa');
 var route = require('koa-route');
 var static = require('koa-static');
-var views = require('co-views');
+var views = require('koa-render');
 var app = koa();
 
-var render = views(__dirname + '/views', {map : {html : 'jade'}});
+app.use(views('./views', 'jade'));
 
 app.use(route.get('/views', function *(next) {
-    this.body = yield render('index.jade', {name : 'koa'});
+    this.body = yield this.render('index.jade', {name : 'koa'});
 }));
 
 app.use(route.get('/hello', function *(next) {

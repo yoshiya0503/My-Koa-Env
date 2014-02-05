@@ -15,6 +15,5 @@ if [ $? -ne 0 ]; then
             return 0;;
     esac
 fi
-    
-alias node='node -harmony'
 
+alias node='node -harmony'
