@@ -1,6 +1,11 @@
-doctype html
+doctype html5
 html(lang='en')
     head
         title koa-render
     body
-        h1 This is Koa Sample
+        h1 This is #{message} Sample
+        form(action='/views',method='POST')
+            input(type='text', name='NAME')
+            input(type='text', name='ADDR')
+            input(type='submit', value='send')
+
